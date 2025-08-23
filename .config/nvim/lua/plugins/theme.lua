@@ -1,0 +1,30 @@
+-- return {
+--     -- Ayu colorscheme
+--     {
+--         "Shatur/neovim-ayu",
+--         lazy = false,    -- load immediately
+--         priority = 1000, -- make sure it loads before other plugins
+--         config = function()
+--             require("ayu").setup({
+--                 mirage = false, -- true for Ayu Mirage variant
+--                 overrides = {},
+--             })
+--             vim.cmd("colorscheme ayu")
+--         end,
+--     },
+-- 
+--     -- Statusline
+--     {
+--         "nvim-lualine/lualine.nvim",
+--         dependencies = { "nvim-tree/nvim-web-devicons" },
+--         config = function()
+--             require("lualine").setup({
+--                 options = {
+--                     theme = "solarized_dark", -- change to "ayu_mirage" if mirage = true
+--                     --                    component_separators = { left = '', right = '' },
+--                     --		    section_separators = { left = '', right = '' },
+--                 },
+--             })
+--         end,
+--     },
+-- }
