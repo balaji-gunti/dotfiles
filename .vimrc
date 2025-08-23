@@ -240,7 +240,9 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
-set updatetime=300
+set updatetime=200
+" Then override CoC highlight group
+hi CocHighlightText cterm=underline gui=underline
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
