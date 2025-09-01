@@ -160,6 +160,18 @@ nnoremap <leader>gf :GFiles?<CR>
 nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gv :Gvdiffsplit<CR>
+nnoremap <leader>gm :Gvdiffsplit!<CR>
+
+" Better diff colors
+highlight DiffAdd    ctermbg=22 ctermfg=white guibg=#005f00 guifg=#ffffff
+highlight DiffDelete ctermbg=52 ctermfg=white guibg=#5f0000 guifg=#ffffff  
+highlight DiffChange ctermbg=17 ctermfg=white guibg=#00005f guifg=#ffffff
+highlight DiffText   ctermbg=53 ctermfg=white guibg=#5f005f guifg=#ffffff cterm=bold gui=bold
+" More visible conflict markers
+highlight ConflictMarkerBegin guibg=#2f7366
+highlight ConflictMarkerOurs guibg=#2e5049
+highlight ConflictMarkerTheirs guibg=#344f69
+highlight ConflictMarkerEnd guibg=#2f628e
 
 " Quick search and replace
 nnoremap <leader>s :%s//<left>
@@ -393,7 +405,7 @@ augroup END
 "    Codeium Configuration Start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:codeium_enabled = v:false " Enable codeium
+let g:codeium_enabled = v:true " Enable codeium
 let g:codeium_disable_bindings = 1
 " Custom keybindings
 imap <script><silent><nowait><expr> <C-g> codeium#Accept()
@@ -407,3 +419,8 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>
 "    Codeium Configuration End
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType javascript,typescript packadd vimspector
+
+" Resize the vim buffers automatically
+if has("autocmd")
+  autocmd VimResized * wincmd =
+endif

@@ -104,6 +104,7 @@ return {
                 "intelephense",
                 "ts_ls",
                 "eslint",
+                "pyright",
             },
             handlers = {
                 -- this first function is the "default handler"

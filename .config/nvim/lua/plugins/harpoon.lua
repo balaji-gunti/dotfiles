@@ -8,10 +8,10 @@ local function toggle_telescope(harpoon_files)
     for _, item in ipairs(harpoon_files.items) do
         table.insert(file_paths, item.value)
     end
-    local opts = themes.get_ivy({
-        promt_title = "Working List"
-    })
-
+    local opts = {}
+    -- local opts = themes.get_ivy({
+    --     promt_title = "Working List"
+    -- })
     require("telescope.pickers").new(opts, {
         finder = require("telescope.finders").new_table({
             results = file_paths,
@@ -29,11 +29,14 @@ return {
     },
     config = function()
         local harpoon = require('harpoon')
-        vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end) -- to add to harpoon list
+        vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)                     -- to add to harpoon list
         vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end) -- list files added to harpoon
         vim.keymap.set("n", "<leader>fl", function() toggle_telescope(harpoon:list()) end,
-            { desc = "Open harpoon window" }) -- to open harpoon in telescope
-        vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end) -- previous buffer
-        vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end) -- next buffer
+            { desc = "Open harpoon window" })                                                     -- to open harpoon in telescope
+        vim.keymap.set("n", "P", function() harpoon:list():prev() end)                            -- previous buffer
+        vim.keymap.set("n", "N", function() harpoon:list():next() end)                            -- next buffer
+        vim.keymap.set("n", "<leader>r", function()
+            require("harpoon"):list():remove()
+        end, { desc = "Remove current buffer from Harpoon" })
     end
 }
