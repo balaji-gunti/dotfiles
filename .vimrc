@@ -72,6 +72,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Move selected lines down
+vnoremap J :m '>+1<CR>gv=gv
+" Move selected lines up
+vnoremap K :m '<-2<CR>gv=gv
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -113,6 +118,7 @@ Plug 'tpope/vim-surround' " Surround words
 Plug 'mustache/vim-mustache-handlebars'  " Syntax for Handlebars
 Plug 'puremourning/vimspector' " For debugging
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' } " windsurf plugin for code completion
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 " YAML Settings
@@ -126,7 +132,6 @@ nnoremap <leader>sr :source ~/.vimrc<CR>
 colorscheme ayu
 "colorscheme codedark
 "colorscheme vim-monokai-tasty
-"colorscheme dracula
 set termguicolors
 "let ayucolor="dark"
 set background=dark
@@ -138,6 +143,15 @@ let NERDTreeShowHidden=1
 " FZF settings
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>f :Rg<CR>
+" Use bat as previewer globally in fzf.vim
+let g:fzf_preview_command = 'bat --style=numbers --color=always --line-range :500 {}'
+"nnoremap <leader>F :call SearchByFileTypes()<CR>
+
+"function! SearchByFileTypes()
+  "let l:exts = input('File extensions (comma separated, e.g., js,ts): ')
+  "let l:globs = join(map(split(l:exts, ','), {_, v -> '--glob "*.' . v . '"' }), ' ')
+  "execute 'Rg ' . l:globs
+"endfunction
 
 " Git blame
 let g:blamer_enabled = 1
@@ -146,6 +160,7 @@ let g:blamer_enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:highlightedyank_highlight_duration = 200
 " set t_Co=256
 " set t_ut=
 " let g:codedark_conservative=1
