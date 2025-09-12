@@ -215,6 +215,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-snippets',
   \ 'coc-tailwindcss',
+  \ 'coc-pyright',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate
@@ -269,8 +270,8 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 set updatetime=200
 " Then override CoC highlight group
-hi CocHighlightText cterm=underline gui=underline
-
+"hi CocHighlightText cterm=underline gui=underline
+hi CocHighlightText ctermbg=darkgray guibg=#3c3836
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -420,7 +421,7 @@ augroup END
 "    Codeium Configuration Start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:codeium_enabled = v:true " Enable codeium
+let g:codeium_enabled = v:false " Enable codeium
 let g:codeium_disable_bindings = 1
 " Custom keybindings
 imap <script><silent><nowait><expr> <C-g> codeium#Accept()

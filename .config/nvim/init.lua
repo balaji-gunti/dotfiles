@@ -13,3 +13,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         })
     end,
 })
+
+vim.opt.termguicolors = true                  -- good to have for plugins
+vim.cmd("hi Normal ctermbg=none guibg=none")  -- use terminal background
+vim.cmd("hi NonText ctermbg=none guibg=none") -- also fix ~ lines

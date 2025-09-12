@@ -5,6 +5,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>")
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "List buffers (fzf)" })
@@ -26,7 +27,7 @@ vim.keymap.set("n", "<leader>s", ":%s//<left>", { desc = "Substitute (manual pat
 vim.keymap.set("n", "<leader>S", ":%s/\\<<C-r><C-w>\\>/", { desc = "Substitute word under cursor (insert replacement)" })
 
 -- Replace word under cursor (global in buffer)
-vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>//g<left><left>", { desc = "Replace word under cursor globally" })
+vim.keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>//g<left><left>", { desc = "Replace word under cursor globally" })
 
 vim.keymap.set("n", "<C-\\>", ":vsplit<CR>", { desc = "Split window vertically" })
 -- resize buffers automatically
