@@ -1,7 +1,6 @@
 require("config.options")
 require("config.keybinds")
 require("config.lazy")
-local vim = vim
 
 local yank_group = vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 

@@ -1,3 +1,7 @@
+-------------------------------------------------------------------------------------------------
+---  THIS IS NOT BEING USED, KEYBINDS IS BEING USED
+-------------------------------------------------------------------------------------------------
+
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)

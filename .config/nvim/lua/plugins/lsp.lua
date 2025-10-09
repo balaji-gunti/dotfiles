@@ -1,4 +1,3 @@
-local vim = vim
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -98,6 +97,23 @@ return {
             end,
         })
 
+        -- Fix Undefined global 'vim'
+        vim.lsp.config('lua_ls', {
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                    },
+                    diagnostics = {
+                        globals = {
+                            'vim',
+                            'require',
+                        },
+                    },
+                },
+            },
+        })
+
         require('mason').setup({})
         require('mason-lspconfig').setup({
             ensure_installed = {
@@ -112,25 +128,6 @@ return {
                 -- it applies to every language server without a custom handler
                 function(server_name)
                     require('lspconfig')[server_name].setup({})
-                end,
-
-                -- this is the "custom handler" for `lua_ls`
-                lua_ls = function()
-                    require('lspconfig').lua_ls.setup({
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = 'LuaJIT',
-                                },
-                                diagnostics = {
-                                    globals = { 'vim' },
-                                },
-                                workspace = {
-                                    library = { vim.env.VIMRUNTIME },
-                                },
-                            },
-                        },
-                    })
                 end,
             },
         })
