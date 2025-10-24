@@ -57,5 +57,10 @@ return {
                 }
             }
         end,
+    },
+    -- lua/plugins/tmux-navigator.lua
+    {
+        "christoomey/vim-tmux-navigator",
+        lazy = false, -- make sure it's always loaded
     }
 }

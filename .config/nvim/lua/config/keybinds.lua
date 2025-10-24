@@ -5,7 +5,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>")
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>so", "<cmd>source %<CR>")
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "List buffers (fzf)" })
@@ -36,3 +36,4 @@ vim.api.nvim_create_autocmd("VimResized", {
         vim.cmd("wincmd =")
     end
 })
+vim.g.tmux_navigator_no_mappings = 1
