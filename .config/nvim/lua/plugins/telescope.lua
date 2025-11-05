@@ -6,6 +6,9 @@ return {
     },
     config = function()
         require("telescope").setup {
+            defaults = {
+                file_ignore_patterns = { "node_modules", "dist/", "build/" }, -- ignore patterns
+            },
             extensions = {
                 fzf = {}
             }

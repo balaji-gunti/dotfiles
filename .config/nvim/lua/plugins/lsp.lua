@@ -122,6 +122,7 @@ return {
                 "ts_ls",
                 "eslint",
                 "pyright",
+                "jsonls"
             },
             handlers = {
                 -- this first function is the "default handler"
