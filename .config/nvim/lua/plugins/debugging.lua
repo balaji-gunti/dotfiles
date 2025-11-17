@@ -132,7 +132,7 @@ return {
             end
 
             --------------------------------------------------------------------
-            -- 🔧 KEYMAPS FOR DEBUGGING
+            -- KEYMAPS FOR DEBUGGING
             --------------------------------------------------------------------
             -- Breakpoint management
             vim.keymap.set("n", "<leader>db", function() dap.toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
@@ -193,14 +193,14 @@ return {
 
 
             --------------------------------------------------------------------
-            -- 🧠 DAP UI custom highlights
+            -- DAP UI custom highlights
             vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#ff5555" })           -- Red
             vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#f1fa8c" })  -- Yellow
             vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#8be9fd" })             -- Cyan
             vim.api.nvim_set_hl(0, "DapStopped", { fg = "#50fa7b", bold = true }) -- Green
             vim.api.nvim_set_hl(0, "DapBreakpointRejected", { fg = "#ffb86c" })   -- Orange
 
-            -- 🎨 BREAKPOINT SIGNS (Visual indicators in gutter)
+            -- BREAKPOINT SIGNS (Visual indicators in gutter)
             --------------------------------------------------------------------
             vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
             vim.fn.sign_define("DapBreakpointCondition", { text = "🟡" })
@@ -209,7 +209,7 @@ return {
             vim.fn.sign_define("DapStopped", { text = "➡️" })
 
             --------------------------------------------------------------------
-            -- 🪄 Automatically load .vscode/launch.json if present
+            -- Automatically load .vscode/launch.json if present
             --------------------------------------------------------------------
             local ok, vscode = pcall(require, "dap.ext.vscode")
             if ok then

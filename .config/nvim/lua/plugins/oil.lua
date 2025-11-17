@@ -4,7 +4,7 @@ return {
     ---@type oil.SetupOpts
     opts = {
         view_options = {
-            show_hidden = true, -- 👈 this makes dotfiles visible
+            show_hidden = true, --> this makes dotfiles visible
         },
     },
     -- Optional dependencies
