@@ -9,10 +9,10 @@ vim.keymap.set("n", "<leader>so", "<cmd>source %<CR>")
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "List buffers (fzf)" })
-vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Close current buffers" })
+vim.keymap.set("n", "<leader>bd", ":bdelete!<CR>", { desc = "Close current buffers" })
 vim.keymap.set("n", "<leader>ba", ":bufdo bd<CR>", { desc = "Close all buffers" })
-vim.keymap.set("n", "<leader>k", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>j", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<A-j>", "<cmd>bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<A-k>", "<cmd>bnext<CR>", { silent = true })
 
 vim.keymap.set("n", "za", "za", { desc = "Toggle fold under cursor" })
 vim.keymap.set("n", "zA", "zA", { desc = "Toggle all folds under cursor" })
@@ -36,4 +36,16 @@ vim.api.nvim_create_autocmd("VimResized", {
         vim.cmd("wincmd =")
     end
 })
-vim.g.tmux_navigator_no_mappings = 1
+-- vim.g.tmux_navigator_no_mappings = 1
+
+-- format selected text
+vim.keymap.set("", "<leader>fo", function()
+    require("conform").format({ async = true }, function(err)
+        if not err then
+            local mode = vim.api.nvim_get_mode().mode
+            if vim.startswith(string.lower(mode), "v") then
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+            end
+        end
+    end)
+end, { desc = "Format code" })
