@@ -6,6 +6,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>")
 vim.keymap.set("n", "<leader>so", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>nrc", "<cmd>vsplit $MYVIMRC<CR>", { desc = "Edit nvim config" })
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "List buffers (fzf)" })

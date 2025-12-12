@@ -41,6 +41,18 @@ return {
         end,
     },
     {
+        "windwp/nvim-ts-autotag", -- For autocomplete/rename html tags
+        ft = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+        },
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end
+    },
+    {
         "akinsho/bufferline.nvim",
         version = "*",
         dependencies = { "nvim-tree/nvim-web-devicons" },
