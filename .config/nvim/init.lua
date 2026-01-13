@@ -46,3 +46,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end
 })
+
+-- To open help files in vertical split always
+vim.opt.helpheight = 999
+vim.opt.splitright = true
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "help", "man" },
+    command = "wincmd L",
+})

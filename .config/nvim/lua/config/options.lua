@@ -22,3 +22,6 @@ o.hidden = true -- ensure hidden buffers are allowed
 -- o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldmethod = "indent"
 o.foldlevel = 99
+
+o.ignorecase = true
+o.smartcase = true

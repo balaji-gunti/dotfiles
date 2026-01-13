@@ -13,6 +13,7 @@ return {
                 "lua",
                 "tsx",
                 "typescript",
+                "javascript",
                 "python"
             }
         })
