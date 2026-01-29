@@ -44,6 +44,5 @@ return {
         vim.keymap.set('n', '<leader>fr', function()
             builtin.lsp_references()
         end)
-        require "config.telescope.multigrep".setup()
     end
 }

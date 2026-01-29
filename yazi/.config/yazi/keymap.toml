@@ -1,0 +1,10 @@
+[[mgr.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Downloads"
+desc = "Cd to ~/Downloads"
+
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "y" ]
+run  = "cd ~/.config/yazi"
+desc = "cd ~/.config/yazi"
