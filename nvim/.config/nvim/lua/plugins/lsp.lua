@@ -167,7 +167,7 @@ return {
                     else
                         item.menu = string.format('[%s]', n)
                     end
-                    return item
+                    return require("nvim-highlight-colors").format(entry, item)
                 end,
             },
             mapping = cmp.mapping.preset.insert({

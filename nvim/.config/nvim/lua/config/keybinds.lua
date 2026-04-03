@@ -50,3 +50,9 @@ vim.keymap.set("", "<leader>fo", function()
         end
     end)
 end, { desc = "Format code" })
+
+-- Increment and Decrement number/selection
+vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+vim.keymap.set("v", "<leader>+", "g<C-a>", { desc = "Increment selection" })
+vim.keymap.set("v", "<leader>-", "g<C-x>", { desc = "Decrement selection" })

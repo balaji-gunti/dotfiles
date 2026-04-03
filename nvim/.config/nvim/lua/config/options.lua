@@ -25,3 +25,5 @@ o.foldlevel = 99
 
 o.ignorecase = true
 o.smartcase = true
+
+o.termguicolors = true

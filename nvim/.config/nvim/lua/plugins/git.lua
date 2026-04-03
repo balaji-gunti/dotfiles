@@ -1,11 +1,6 @@
 return {
     {
         "tpope/vim-fugitive",
-        dependencies = {
-            { "junegunn/fzf" },
-            { "junegunn/fzf.vim" },
-            dependencies = { "nvim-telescope/telescope.nvim" },
-        },
         config = function()
             local builtin = require("telescope.builtin")
 
