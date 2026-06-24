@@ -83,6 +83,10 @@ return {
             callback = function(event)
                 local opts = { buffer = event.buf }
 
+                -- Prevent Neovim 0.11 from auto-setting formatexpr to LSP on attach.
+                -- '=' is handled by vim's built-in indenter (or treesitter where its queries are reliable).
+                vim.bo[event.buf].formatexpr = ''
+
                 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
                 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
                 vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)

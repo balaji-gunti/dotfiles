@@ -1,19 +1,16 @@
 return {
     {
-        'ojroques/vim-oscyank', -- This helps with ssh tunneling and copying to clipboard
-    },
-    {
         'tpope/vim-surround', -- Provides mappings to easily delete, change and add such surroundings in pairs
     },
     {
-        "tpope/vim-commentary", -- Comment and Uncomment code
+        "folke/ts-comments.nvim",
+        event = "VeryLazy",
+        opts = {},
         config = function()
-            -- Remap vim-commentary
-            -- Line comment
+            require("ts-comments").setup()
+
             vim.keymap.set("n", "cc", "gcc", { remap = true, desc = "Comment line" })
             vim.keymap.set("v", "cc", "gc", { remap = true, desc = "Comment selection" })
-
-            -- Uncomment (just reuses commentary toggle)
             vim.keymap.set("n", "cu", "gcc", { remap = true, desc = "Uncomment line" })
             vim.keymap.set("v", "cu", "gc", { remap = true, desc = "Uncomment selection" })
         end,
@@ -90,9 +87,7 @@ return {
             require("supermaven-nvim").setup({
                 keymaps = {
                     accept_suggestion = "<leader><Tab>",
-                    clear_suggestion = "<C-]>",
-                    accept_word = "<leader>a",
-
+                    clear_suggestion = "<C-]>"
                 },
             })
         end,
@@ -147,7 +142,108 @@ return {
                 enable_tailwind = true,
             })
         end,
-    }
+    },
+    {
+        "sphamba/smear-cursor.nvim",
+
+        opts = {
+            stiffness = 0.9,                      -- 0.6      [0, 1]
+            trailing_stiffness = 0.6,             -- 0.45     [0, 1]
+            stiffness_insert_mode = 0.7,          -- 0.5      [0, 1]
+            trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+            damping = 0.95,                       -- 0.85     [0, 1]
+            damping_insert_mode = 0.95,           -- 0.9      [0, 1]
+            distance_stop_animating = 0.5,        -- 0.1      > 0
+
+            -- Smear cursor when switching buffers or windows.
+            smear_between_buffers = true,
+
+            -- Smear cursor when moving within line or to neighbor lines.
+            -- Use `min_horizontal_distance_smear` and `min_vertical_distance_smear` for finer control
+            smear_between_neighbor_lines = true,
+
+            -- Draw the smear in buffer space instead of screen space when scrolling
+            scroll_buffer_space = true,
+
+            -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
+            -- Smears and particles will look a lot less blocky.
+            legacy_computing_symbols_support = false,
+
+            -- Smear cursor in insert mode.
+            -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
+            smear_insert_mode = true,
+        },
+    },
+    {
+        dir = "~/my-nvim-plugins/hl7.nvim",
+        name = "hl7.nvim",
+        ft = "hl7",
+        lazy = false,
+        config = function()
+            local hl7 = require("hl7")
+            vim.api.nvim_create_autocmd("BufReadPost", {
+                pattern = "*.hl7",
+                callback = function()
+                    hl7.format()
+                    -- hl7.show_tree()
+                    hl7.highlight()
+                end,
+            })
+
+            -- Auto-run when HL7 file opens
+            -- vim.api.nvim_create_autocmd("FileType", {
+            --     pattern = "hl7",
+            --     callback = function()
+            --         hl7.highlight()
+            --         hl7.format()
+            --     end,
+            -- })
+
+            -- hl7.highlight();
+
+            vim.keymap.set("n", "<leader>hf", function() hl7.format() end)
+            vim.keymap.set("n", "<leader>hp", hl7.parse)
+            vim.keymap.set("n", "<leader>hP", function() hl7.find_segment("PID") end)
+            vim.keymap.set("n", "<leader>hO", function() hl7.find_segment("OBX") end)
+            vim.keymap.set("n", "<leader>ht", function() hl7.show_tree() end) -- toggle
+            vim.keymap.set("n", "<leader>hn", hl7.show_field_numbers)
+        end,
+    },
+    -- {
+    --     'dmtrKovalenko/fff.nvim',
+    --     build = function()
+    --         -- downloads a prebuilt binary or falls back to cargo build
+    --         require("fff.download").download_or_build_binary()
+    --     end,
+    --     -- for nixos:
+    --     -- build = "nix run .#release",
+    --     opts = {
+    --         debug = {
+    --             enabled = true,
+    --             show_scores = true,
+    --         },
+    --     },
+    --     lazy = false, -- the plugin lazy-initialises itself
+    --     keys = {
+    --         { "ff", function() require('fff').find_files() end, desc = 'FFFind files' },
+    --         { "fg", function() require('fff').live_grep() end,  desc = 'LiFFFe grep' },
+    --         {
+    --             "fz",
+    --             function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end,
+    --             desc = 'Live fffuzy grep',
+    --         },
+    --         {
+    --             "fc",
+    --             function() require('fff').live_grep({ query = vim.fn.expand("<cword>") }) end,
+    --             desc = 'Search current word',
+    --         },
+    --     },
+    -- }
+    -- {
+    --     "folke/which-key.nvim",
+    --     event = "VeryLazy",
+    --     opts = {},
+    -- }
     -- {
     --     "nvim-neo-tree/neo-tree.nvim",
     --     branch = "v3.x",

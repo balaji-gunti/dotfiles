@@ -7,8 +7,7 @@ return {
             highlight = {
                 enable = true,
             },
-            indent = { enable = true },
-            autotage = { enable = true },
+            indent = { enable = true, disable = { "yaml" } },
             ensure_installed = {
                 "lua",
                 "tsx",

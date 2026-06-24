@@ -27,3 +27,4 @@ o.ignorecase = true
 o.smartcase = true
 
 o.termguicolors = true
+o.winborder = "rounded"

@@ -30,6 +30,7 @@ return {
             })
         end, { desc = 'Literal live grep (no regex)' })
         vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Telescope grep string' })
+        vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Telescope lsp references' })
         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>fm', builtin.man_pages, { desc = 'Telescope help man pages' })

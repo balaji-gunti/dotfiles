@@ -7,7 +7,8 @@ return {
             -- Fugitive commands
             vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
             vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", { desc = "Git commit" })
-            vim.keymap.set("n", "<leader>gb", ":Git branch<CR>", { desc = "Git blame" })
+            vim.keymap.set("n", "<leader>gb", ":Git branch<CR>", { desc = "Git branch" })
+            vim.keymap.set("n", "<leader>gB", ":Git blame<CR>", { desc = "Git blame" })
             vim.keymap.set("n", "<leader>gp", ":Git pull<CR>", { desc = "Git pull" })
             vim.keymap.set("n", "<leader>gP", ":Git push<CR>", { desc = "Git Push" })
             vim.keymap.set("n", "<leader>gv", ":Gvdiffsplit<CR>", { desc = "Git vertical diff, 2 way split" })
