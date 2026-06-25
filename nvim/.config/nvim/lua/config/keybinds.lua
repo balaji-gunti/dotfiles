@@ -11,6 +11,7 @@ vim.keymap.set("n", "<leader>nrc", "<cmd>vsplit $MYVIMRC<CR>", { desc = "Edit nv
 -- Buffer navigation
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "List buffers (fzf)" })
 vim.keymap.set("n", "<leader>bd", ":bdelete!<CR>", { desc = "Close current buffers" })
+vim.keymap.set("n", "<leader>bD", ":BufferLineCloseOthers<CR>", { desc = "Close other buffers except current one" })
 vim.keymap.set("n", "<leader>ba", ":bufdo bd<CR>", { desc = "Close all buffers" })
 vim.keymap.set("n", "<A-j>", "<cmd>bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<A-k>", "<cmd>bnext<CR>", { silent = true })
