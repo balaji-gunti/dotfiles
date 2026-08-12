@@ -126,7 +126,12 @@ return {
                 "ts_ls",
                 "eslint",
                 "pyright",
-                "jsonls"
+                "jsonls",
+                "gopls",
+                "tailwindcss",
+                "cssls",
+                "emmet_ls",
+                "html",
             },
             handlers = {
                 -- this first function is the "default handler"
@@ -149,6 +154,7 @@ return {
                 completeopt = 'menu,menuone,noinsert'
             },
             window = {
+                -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
             sources = {
