@@ -1,25 +1,56 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = "main",
+        lazy = false,
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup({
-                highlight = {
-                    enable = true,
-                },
-                indent = { enable = true, disable = { "yaml" } },
-                ensure_installed = {
-                    "lua",
-                    "tsx",
-                    "typescript",
-                    "javascript",
-                    "python",
-                    "go",
-                    "css",
-                    "html",
-                    "json"
-                }
+            local ensure_installed = {
+                "lua",
+                "tsx",
+                "typescript",
+                "javascript",
+                "python",
+                "go",
+                "css",
+                "html",
+                "json",
+                "glimmer",
+                "yaml"
+            }
+
+            require("nvim-treesitter").setup()
+
+            -- .hbs is filetype "handlebars"; the parser is named "glimmer".
+            vim.treesitter.language.register("glimmer", "handlebars")
+            vim.treesitter.language.register("glimmer", "html.handlebars")
+
+            local installed = require("nvim-treesitter.config").get_installed()
+            local to_install = vim.iter(ensure_installed)
+                :filter(function(parser) return not vim.tbl_contains(installed, parser) end)
+                :totable()
+            if #to_install > 0 then
+                require("nvim-treesitter").install(to_install)
+            end
+
+            local function attach(bufnr, ft)
+                pcall(vim.treesitter.start, bufnr)
+                if ft ~= "yaml" then
+                    vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end
+            end
+
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args) attach(args.buf, args.match) end,
             })
+
+            -- Buffers restored by `:restart` (or otherwise already loaded with a
+            -- filetype) never fire FileType, so backfill them here.
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype ~= "" then
+                    attach(buf, vim.bo[buf].filetype)
+                end
+            end
         end
     },
     {

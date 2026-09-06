@@ -55,3 +55,8 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = { "help", "man" },
     command = "wincmd L",
 })
+
+vim.cmd("hi FloatBorder guifg=#565f89 guibg=none")
+
+-- Autocomplete popup background
+vim.cmd("hi Pmenu guibg=none")

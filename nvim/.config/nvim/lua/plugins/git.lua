@@ -13,6 +13,8 @@ return {
             vim.keymap.set("n", "<leader>gP", ":Git push<CR>", { desc = "Git Push" })
             vim.keymap.set("n", "<leader>gv", ":Gvdiffsplit<CR>", { desc = "Git vertical diff, 2 way split" })
             vim.keymap.set("n", "<leader>gm", ":Gvdiffsplit!<CR>", { desc = "Git vertical diff, 3 way split" })
+            vim.keymap.set("n", "<leader>gl", ":Git log --oneline<CR>", { desc = "Git log" })
+            vim.keymap.set("n", "<leader>grl", ":Git reflog --oneline<CR>", { desc = "Git reflog" })
             -- vim.keymap.set("n", "<leader>gf", ":GFiles?<CR>", { desc = "Git files" })
 
             -- -- Telescope replacements for fzf.vim

@@ -6,7 +6,10 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = 'tokyonight',
+            options = {
+                theme = "OceanicNext"
+                -- theme = "tokyonight"
+            }
         }
     }
 }
